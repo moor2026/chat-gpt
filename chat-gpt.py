@@ -18,7 +18,7 @@ def query_chatgpt(prompts):
 
   return json.loads(jsonStr)
 
-openai.api_key = "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"
+openai.api_key = ""
 prompt = [{"role": "system", "content": "You are a veterinarian"},
             {"role": "system", "content": "Answer in JSON format with the main Diagnosis, the Certainty of that diagnosis with values [confirmed, suspected/probable,"
                                           " differential, negated/ruled out, not applicable], the Severity with [mild, moderate, severe, unspecified, not applicable],"
@@ -26,7 +26,7 @@ prompt = [{"role": "system", "content": "You are a veterinarian"},
             ]
 
 
-df = pd.read_csv(r"C:\users\steve_000\Documents\SAVSNET,sample,vet,data_12Sept2023.csv", encoding='unicode_escape', nrows=28)
+df = pd.read_csv(r"SAVSNET,sample,vet,data_12Sept2023.csv", encoding='unicode_escape', nrows=28)
 results = []
 truth = df[['Diagnosis', 'Certainty', 'Severity', 'Concurrency']].apply(lambda x: x.astype(str).str.upper())
 
